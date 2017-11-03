@@ -1,4 +1,17 @@
 ########################################################################
+# POSTGRES
+########################################################################
+
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+
+########################################################################
+# RUBY
+########################################################################
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+########################################################################
 # ALIASES
 ########################################################################
 
@@ -167,7 +180,11 @@ bind '"\e[B": history-search-forward'
 # https://github.com/registerguard/registerguard.github.com/wiki/Install-python,-virtualenv,-virtualenvwrapper-in-a-brew-environment
 # Python virtual environments:
 export WORKON_HOME=$HOME/.virtualenvs
-#export WORKON_HOME=/tmp/foo/.virtualenvs
+#export PATH=/usr/local/bin:$PATH
+# Brew said to add this
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
@@ -176,25 +193,6 @@ if [[ -r /usr/local/bin/virtualenvwrapper.sh ]]; then
 else
     echo "WARNING: Can't find virtualenvwrapper.sh"
 fi
-
-########################################################################
-# RUBY
-########################################################################
-
-# https://github.com/wayneeseguin/rvm/issues/2205
-#export PATH=$PATH:/mhulse.rvm/bin # Add RVM to PATH for scripting
-
-# Ruby Version Manager:
-# http://www.interworks.com/blogs/ckaukis/2013/03/05/installing-ruby-200-rvm-and-homebrew-mac-os-x-108-mountain-lion
-# http://portertech.ca/2010/03/26/homebrew--rvm--awesome/
-
-########################################################################
-# GOOGLE
-########################################################################
-
-# Google Cloud Storage:
-export PATH=${PATH}:$HOME/gsutil # https://developers.google.com/storage/docs/gsutil_install
-alias gsutil-hulse=BOTO_CONFIG=$HOME/.boto-hulse\ gsutil
 
 ########################################################################
 # MISCELLANEOUS
@@ -213,8 +211,3 @@ shopt -s checkwinsize
 
 # Disables shadow on screenshots:
 defaults write com.apple.screencapture disable-shadow -bool true
-
-# PATHS
-PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
